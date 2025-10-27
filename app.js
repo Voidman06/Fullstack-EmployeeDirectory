@@ -16,11 +16,11 @@ app.get("/employees/random", (request, response) => {
 
   const employee = employees[idRandom];
 
-  response.send(employee);
+  response.status(200).send(employee);
 });
 
 app.get("/employees/:id", (request, response) => {
-  const id = Number(request.params.id);
+  const { id } = request.params.id;
   const employee = employees.find((e) => e.id === id);
   if (employee) {
     response.status(200).send(employee);
